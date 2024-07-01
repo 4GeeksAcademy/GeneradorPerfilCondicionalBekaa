@@ -29,18 +29,58 @@ function render(variables = {}) {
   let cover = `<div class="cover"><img src="${variables.background}" /></div>`;
   if (variables.includeCover == false) cover = "<div class='cover'></div>";
 
+  let name = `<h1>${variables.name}</h1>`;
+  if (variables.name == null) {
+    name = "<h1></h1>";
+  }
+  let lastName = `<h1>${variables.lastName}</h1>`;
+  if (variables.lastName == null) {
+    lastName = "<h1></h1>";
+  }
+
+  let role = `<h2>${variables.role}</h2>`;
+  if (variables.role == null) {
+    role = "<h2></h2>";
+  }
+  let country = `<h3>${variables.country}, </h3>`;
+  if (variables.country == null) {
+    country = "<h3></h3>";
+  }
+
+  let city = `<h3>${variables.city}</h3>`;
+  if (variables.city == null) {
+    city = "<h3></h3>";
+  }
+  let twitter = `<li><a href=${variables.twitter}<i class="fab fa-twitter"></i></a></li>`;
+  if (variables.twitter == null) {
+    twitter = `<li><a href=><i class="fab fa-twitter"></i></a></li>`;
+  }
+  let github = `<li><a href=${variables.github}<i class="fab fa-github"></i></a></li>`;
+  if (variables.github == null) {
+    github = `<li><a href=><i class="fab fa-github"></i></a></li>`;
+  }
+  let linkedin = `<li><a href=${variables.linkedin}<i class="fab fa-linkedin"></i></a></li>`;
+  if (variables.linkedin == null) {
+    linkedin = `<li><a href=><i class="fab fa-linkedin"></i></a></li>`;
+  }
+
+  let instagram = `<li><a href=${variables.instagram}<i class="fab fa-instagram"></i></a></li>`;
+  if (variables.instagram == null) {
+    instagram = `<li><a href=><i class="fab fa-instagram"></i></a></li>`;
+  }
+
   // reset the website body with the new html output
   document.querySelector("#widget_content").innerHTML = `<div class="widget">
             ${cover}
           <img src="${variables.avatarURL}" class="photo" />
-          <h1>Lucy Boilett</h1>
-          <h2>Web Developer</h2>
-          <h3>Miami, USA</h3>
-          <ul class="position-right">
-            <li><a href="https://twitter.com/4geeksacademy"><i class="fab fa-twitter"></i></a></li>
-            <li><a href="https://github.com/4geeksacademy"><i class="fab fa-github"></i></a></li>
-            <li><a href="https://linkedin.com/school/4geeksacademy"><i class="fab fa-linkedin"></i></a></li>
-            <li><a href="https://instagram.com/4geeksacademy"><i class="fab fa-instagram"></i></a></li>
+          <div class="datos">${name}${lastName}</div>
+          <div class="role">${role}</div>
+          <div class="country">${country} ${city}</div>
+          <ul class=${variables.socialMediaPosition}>
+          ${twitter}
+          ${github}
+          ${linkedin}
+          ${instagram}
           </ul>
         </div>
     `;
@@ -54,9 +94,11 @@ window.onload = function() {
     // if includeCover is true the algorithm should show the cover image
     includeCover: true,
     // this is the image's url that will be used as a background for the profile cover
-    background: "https://images.unsplash.com/photo-1511974035430-5de47d3b95da",
+    background:
+      "https://t4.ftcdn.net/jpg/05/57/30/45/360_F_557304508_4HiGABGRGUvzfS1XQkKYVmH45TGhUVOn.jpg",
     // this is the url for the profile avatar
-    avatarURL: "https://randomuser.me/api/portraits/women/42.jpg",
+    avatarURL:
+      "https://media.licdn.com/dms/image/D4D03AQHZZiLzzJfEbA/profile-displayphoto-shrink_200_200/0/1671878907486?e=2147483647&v=beta&t=9WeBYwWimsBYr2crc8tfeCVBq_r72t7e2MQnJDemY9I",
     // social media bar position (left or right)
     socialMediaPosition: "position-left",
     // social media usernames
